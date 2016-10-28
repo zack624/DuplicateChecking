@@ -6,7 +6,6 @@ import home.nust.paging.service.PageService;
 import home.nust.paging.service.PageServiceImpl;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -17,6 +16,8 @@ import javax.servlet.http.HttpServletResponse;
 
 public class PageServlet extends HttpServlet {
 
+	private static final long serialVersionUID = 1L;
+
 	public static final Logger logger = Logger.getLogger("PageServlet");
 	
 	private PageService pageService = new PageServiceImpl();
@@ -25,7 +26,7 @@ public class PageServlet extends HttpServlet {
 	}
 
 	public void destroy() {
-		super.destroy(); // Just puts "destroy" string in log
+		super.destroy();
 	}
 	
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
