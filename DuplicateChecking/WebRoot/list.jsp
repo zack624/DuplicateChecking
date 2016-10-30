@@ -72,12 +72,27 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   	<div>
   		<!-- 分页组件 -->
   		<ul class="pagination">
-  			<!-- class=disabled即不点击 -->
-  			<li class="<c:if test="${page.currentPage eq 1}">disabled</c:if>"><a href="PageServlet?currentPage=${page.currentPage - 1 }">&laquo;</a></li>
-  			<c:forEach begin="1" end="${page.totalPage }" varStatus="s">
+  			
+  			<c:if test="${!(page.currentPage eq 1)}">
+  				<li><a href="PageServlet?currentPage=1">首页</a>
+  				<li><a href="PageServlet?currentPage=${page.currentPage - 1 }">&laquo;</a></li>
+  			</c:if>
+  			<!-- if(cP-2 <= 0 || tP < 5) begin=1;
+  				 else 
+  				 	if(cP+2 > tP) begin=tP-4;
+  				 	else begin=cP-2; -->
+  			<!-- if(cP+2 > tP || tP < 5) end=tP;
+  				 else
+  				 	if(cP-2 > 0) end=cP+2;
+  				 		else end=5-->
+  			<c:forEach begin="${( (page.currentPage - 2) > 0 && page.totalPage >= 5 ) ? ( (page.currentPage + 2) <= page.totalPage ? (page.currentPage - 2):(page.totalPage - 4) ) : 1}" 
+  				end="${( (page.currentPage + 2) <= page.totalPage && page.totalPage >= 5) ? ( (page.currentPage - 2) > 0 ? (page.currentPage + 2): 5 ) : page.totalPage}" varStatus="s">
+  				<!-- class=disabled即不能点击 -->
   				<li class="<c:if test="${s.index eq page.currentPage}">disabled</c:if>"><a href="PageServlet?currentPage=${s.index }">${s.index }</a></li>
   			</c:forEach>
-			<li class="<c:if test="${page.currentPage eq page.totalPage }">disabled</c:if>"><a href="PageServlet?currentPage=${page.currentPage + 1 }">&raquo;</a></li>
+			<c:if test="${!(page.currentPage eq page.totalPage)}">
+				<li><a href="PageServlet?currentPage=${page.currentPage + 1 }">&raquo;</a></li>
+			</c:if>
   		</ul>
   	</div>
   </div>  
