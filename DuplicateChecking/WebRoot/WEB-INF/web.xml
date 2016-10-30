@@ -18,7 +18,17 @@
     <url-pattern>/PageServlet</url-pattern>
   </servlet-mapping>
   
-    <servlet>
+  <servlet>
+    <servlet-name>IndexServlet</servlet-name>
+    <servlet-class>home.nust.paging.web.IndexServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>IndexServlet</servlet-name>
+    <url-pattern>/IndexServlet</url-pattern>
+  </servlet-mapping>
+  
+  
+  <servlet>
     <servlet-name>NgServlet</servlet-name>
     <servlet-class>home.nust.paging.test.NgServlet</servlet-class>
   </servlet>
