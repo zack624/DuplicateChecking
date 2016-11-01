@@ -44,7 +44,7 @@ public class PageDaoImpl implements PageDao{
     @Override
     public int getCount() {
         Connection conn = getConnection();
-        String sql = "select count(*) from duplicatechecking d";
+        String sql = "select count(*) from DuplicateChecking d";
         int count = 0;
         try{
             PreparedStatement stmt = conn.prepareStatement(sql);
@@ -68,7 +68,7 @@ public class PageDaoImpl implements PageDao{
     @Override
     public List<DuplicateChecking> getPage(int currentPage, int everyPageRecord) {
         Connection conn = getConnection();
-        String sql = "select * from duplicatechecking d limit ?,?";
+        String sql = "select * from DuplicateChecking d limit ?,?";
         List<DuplicateChecking> dcList = new ArrayList<DuplicateChecking>();
         try{
             PreparedStatement stmt = conn.prepareStatement(sql);

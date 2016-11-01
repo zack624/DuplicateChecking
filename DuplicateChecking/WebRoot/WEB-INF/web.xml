@@ -17,7 +17,6 @@
     <servlet-name>PageServlet</servlet-name>
     <url-pattern>/PageServlet</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>IndexServlet</servlet-name>
     <servlet-class>home.nust.paging.web.IndexServlet</servlet-class>
@@ -27,6 +26,14 @@
     <url-pattern>/IndexServlet</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+    <servlet-name>ChartServlet</servlet-name>
+    <servlet-class>home.nust.paging.web.ChartServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ChartServlet</servlet-name>
+    <url-pattern>/ChartServlet</url-pattern>
+  </servlet-mapping>
   
   <servlet>
     <servlet-name>NgServlet</servlet-name>
