@@ -57,7 +57,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!--    	</div> -->
 	<!-- 引入导航页面 -->
 	<jsp:include page="navigation.jsp"></jsp:include>
-   
+
    <!-- 显示区 -->
    <div id="main">
   	<!-- 面板 -->
@@ -83,11 +83,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   				<td>${s.index + 1 + (page.currentPage - 1)*page.everyPageRecord }</td>
   				<td>${record.name }</td>
   				<td>${record.major }</td>
-  				<td>${record.paperTitle }</td>
+  				<td>${record.papertitle }</td>
   				<td>${record.teacher }</td>
   				<c:choose>
-					<c:when test="${record.timeOfDelivery eq null }"><td>未上传</td></c:when>
-					<c:otherwise><td>${record.timeOfDelivery }</td></c:otherwise>
+					<c:when test="${record.timeofdelivery eq null }"><td>未上传</td></c:when>
+					<c:otherwise><td>${record.timeofdelivery }</td></c:otherwise>
   				</c:choose>
   			</tr>
   		</c:forEach>
@@ -101,8 +101,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   		<ul class="pagination">
   			
   			<c:if test="${!(page.currentPage eq 1)}">
-  				<li><a href="PageServlet?currentPage=1">首页</a>
-  				<li><a href="PageServlet?currentPage=${page.currentPage - 1 }">&laquo;</a></li>
+  				<li><a href="index.do?currentPage=1">首页</a>
+  				<li><a href="index.do?currentPage=${page.currentPage - 1 }">&laquo;</a></li>
   			</c:if>
   			<!-- if(cP-2 <= 0 || tP < 5) begin=1;
   				 else 
@@ -115,10 +115,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   			<c:forEach begin="${( (page.currentPage - 2) > 0 && page.totalPage >= 5 ) ? ( (page.currentPage + 2) <= page.totalPage ? (page.currentPage - 2):(page.totalPage - 4) ) : 1}" 
   				end="${( (page.currentPage + 2) <= page.totalPage && page.totalPage >= 5) ? ( (page.currentPage - 2) > 0 ? (page.currentPage + 2): 5 ) : page.totalPage}" varStatus="s">
   				<!-- class=disabled即不能点击 -->
-  				<li class="<c:if test="${s.index eq page.currentPage}">disabled</c:if>"><a href="PageServlet?currentPage=${s.index }">${s.index }</a></li>
+  				<li class="<c:if test="${s.index eq page.currentPage}">disabled</c:if>"><a href="index.do?currentPage=${s.index }">${s.index }</a></li>
   			</c:forEach>
 			<c:if test="${!(page.currentPage eq page.totalPage)}">
-				<li><a href="PageServlet?currentPage=${page.currentPage + 1 }">&raquo;</a></li>
+				<li><a href="index.do?currentPage=${page.currentPage + 1 }">&raquo;</a></li>
 			</c:if>
   		</ul>
   		</nav>

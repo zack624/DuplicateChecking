@@ -9,6 +9,8 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  
+  <!-- 项目版本1.0.0，Servlet实现 -->
   <servlet>
     <servlet-name>PageServlet</servlet-name>
     <servlet-class>home.nust.paging.web.PageServlet</servlet-class>
@@ -25,7 +27,6 @@
     <servlet-name>IndexServlet</servlet-name>
     <url-pattern>/IndexServlet</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>ChartServlet</servlet-name>
     <servlet-class>home.nust.paging.web.ChartServlet</servlet-class>
@@ -34,7 +35,6 @@
     <servlet-name>ChartServlet</servlet-name>
     <url-pattern>/ChartServlet</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>NgServlet</servlet-name>
     <servlet-class>home.nust.paging.test.NgServlet</servlet-class>
@@ -43,4 +43,40 @@
     <servlet-name>NgServlet</servlet-name>
     <url-pattern>/NgServlet</url-pattern>
   </servlet-mapping>
+	<!-- 版本1.0.0，Servlet实现 -->
+  
+  <!-- 项目1.0.1版本，基于Spring和Hibernate框架 -->
+  <listener>
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
+  <context-param>
+    <param-name>contextConfigLocation</param-name>
+    <param-value>classpath:applicationContext.xml</param-value>
+  </context-param>
+  
+  <servlet>
+  		<servlet-name>springmvc</servlet-name>
+  		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+  		<init-param>
+  			<param-name>contextConfigLocation</param-name>
+  			<param-value>classpath:spring-mvc.xml</param-value>
+  		</init-param>
+  		<load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+  		<servlet-name>springmvc</servlet-name>
+  		<!-- 不能加/ -->
+  		<url-pattern>*.do</url-pattern>
+  </servlet-mapping>
+  
+  <!-- openSessionInView,与getCurrentSession()有关 -->
+  <filter>
+  	<filter-name>openSessionInView</filter-name>
+  	<filter-class>org.springframework.orm.hibernate4.support.OpenSessionInViewFilter</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>openSessionInView</filter-name>
+  	<url-pattern>/*</url-pattern>
+  </filter-mapping>
+  
 </web-app>
