@@ -31,12 +31,12 @@
 				</prop>
 			</props>
 		</property>
-		<property name="mappingResources">
-			<list>
-				<value>
-					home/nust/dc/entity/Duplicatechecking.hbm.xml
-				</value></list>
-		</property>
+<!-- 		<property name="mappingResources"> -->
+<!-- 			<list> -->
+<!-- 				<value> -->
+<!-- 					home/nust/dc/entity/Duplicatechecking.hbm.xml -->
+<!-- 				</value></list> -->
+<!-- 		</property> -->
 		<property name="annotatedClasses">
 			<list>
 				<value>home.nust.dc.entity.Duplicatechecking</value></list>
@@ -46,14 +46,10 @@
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 
-<!-- 	<bean id="DuplicatecheckingDAO" -->
-<!-- 		class="home.nust.dc.dao.DuplicatecheckingDAO"> -->
-<!-- 		<property name="sessionFactory"> -->
-<!-- 			<ref bean="sessionFactory" /> -->
-<!-- 		</property> -->
-<!-- 	</bean> -->
-	<context:annotation-config/>
 	<context:component-scan base-package="home.nust.dc"/>
+	
+	<context:annotation-config/>
+	
 	<tx:annotation-driven/>
 	
 </beans>

@@ -15,6 +15,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Projection;
 import org.hibernate.criterion.Projections;
+import org.hibernate.criterion.PropertyProjection;
 
 import static org.hibernate.criterion.Example.create;
 
@@ -221,22 +222,33 @@ public class DuplicateCheckingDaoImpl implements DuplicateCheckingDao {
 		Session session = sessionFactory.getCurrentSession();
 		Query query = session.createQuery("select count(*) from Duplicatechecking");
 		Long count = (Long) query.uniqueResult();
-		return count.intValue();
+		int intCount = count.intValue();
+		return intCount;
+//另一种实现		
 //		Criteria criteria = session.createCriteria(Duplicatechecking.class);
 //		criteria.setProjection(Projections.rowCount());
 //		Long count = (Long)criteria.uniqueResult();
 	}
 
 	@Override
-	public List<Duplicatechecking> findByCurrentPage(int currentPageIndex,
+	public List<Duplicatechecking> findByCurrentPage(int currentPage,
 			int everyPageRecordCount) {
 		Session session = sessionFactory.getCurrentSession();
 		Criteria criteria = session.createCriteria(Duplicatechecking.class);
-		criteria.setFirstResult(0);
+		criteria.setFirstResult((currentPage-1) * everyPageRecordCount);
 		criteria.setMaxResults(everyPageRecordCount);
 		@SuppressWarnings("unchecked")
 		List<Duplicatechecking> dcList = criteria.list();
 		return dcList;
+	}
+
+	@Override
+	public List findStuCountOfMajor() {
+		//TODO 以major分组，查询数量
+		Session session = sessionFactory.getCurrentSession();
+		Query query = session.createQuery("select count(*) as account,major from Duplicatechecking group by major");
+		List list = query.list();
+		return list;
 	}
 	
 	

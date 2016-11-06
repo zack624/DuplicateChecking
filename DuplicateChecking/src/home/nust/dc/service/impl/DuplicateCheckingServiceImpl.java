@@ -23,13 +23,20 @@ public class DuplicateCheckingServiceImpl implements DuplicateCheckingService {
 	}
 
 	@Override
-	public Page<Duplicatechecking> getPage(int currentPageIndex,
+	public Page<Duplicatechecking> getPage(int currentPage,
 			int everyPageRecordCount) {
 		int count = duplicateCheckingDao.findCount();
-		Page<Duplicatechecking> page = new Page<>(currentPageIndex, everyPageRecordCount, count);
-		List<Duplicatechecking> dcList = duplicateCheckingDao.findByCurrentPage(currentPageIndex, everyPageRecordCount);
+		Page<Duplicatechecking> page = new Page<>(currentPage, everyPageRecordCount, count);
+		List<Duplicatechecking> dcList = duplicateCheckingDao.findByCurrentPage(currentPage, everyPageRecordCount);
 		page.setRecords(dcList);
 		return page;
 	}
 
+	@Override
+	public List getStuCountOfMajor() {
+		@SuppressWarnings("unchecked")
+		List<Object[]> list = duplicateCheckingDao.findStuCountOfMajor();
+		return list;	
+	}
+	
 }

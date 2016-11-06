@@ -49,6 +49,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	      <ul class="nav navbar-nav">
 	        <li class="active"><a href="index.do">查重名单</a></li>
+	        
+	        <!--  -->
+			<li class=""><a href="DCChart.do">查重折线图</a>		        
+	        <!--  -->
+
 	        <li><a href="javascript:;">查重结果</a></li>
 	    </ul>
 	    </div>    

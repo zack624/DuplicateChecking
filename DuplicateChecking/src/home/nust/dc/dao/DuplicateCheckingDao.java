@@ -60,4 +60,5 @@ public interface DuplicateCheckingDao {
 	 */
 	public List<Duplicatechecking> findByCurrentPage(int currentPageIndex , int everyPageRecordCount);
 
+	public List findStuCountOfMajor();
 }

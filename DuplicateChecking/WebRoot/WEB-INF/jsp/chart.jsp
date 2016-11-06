@@ -39,22 +39,28 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-  		<jsp:include page="navigation.jsp"></jsp:include>
+  		<jsp:include page="navigation.jsp"/>
   		
   		<!-- 通过highchart绘制柱头图 -->
-  		<div id="column" style="min-width: 310px; height: 400px; margin: 0 auto;"></div>
+  		<div class="main">
+  			<div id="column" style="min-width: 310px; height: 400px; margin: 0 auto;"></div>
+  		</div>
   </body>
   
   <script type="text/javascript">
 		$(function () {
-			var url = "${pageContext.request.contextPath}/ChartServlet";
-		
+			var url = "${pageContext.request.contextPath}/showDCChart.do";
+			var majorArr = [];			
+			var countArr = [];
 			$.ajax({
 				url : url,
-				data : {},
 				dataType : "json",
 				success : function(data){
-					columnDraw(data);
+					$(data).each(function(index,item){
+						countArr.push(item[0]);
+						majorArr.push(item[1]);
+					});				
+					columnDraw(majorArr,countArr);
 				},
 				
 				error : function(){
@@ -63,7 +69,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			});
 		
 		
-		function columnDraw(data){
+		function columnDraw(xArr,yArr){
 		    $('#column').highcharts({
 		        chart: {
 		            type: 'column'
@@ -74,23 +80,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		        subtitle: {
 		            text: '南京理工大学-机械工程学院'
 		        },
+		        credits:{
+		        	enabled : true,
+		        	text : "zack"
+		        },
 		        xAxis: {
-		            categories: 
-// 		            [
-// 		                'Jan',
-// 		                'Feb',
-// 		                'Mar',
-// 		                'Apr',
-// 		                'May',
-// 		                'Jun',
-// 		                'Jul',
-// 		                'Aug',
-// 		                'Sep',
-// 		                'Oct',
-// 		                'Nov',
-// 		                'Dec'
-// 		            ],
-					data.x,
+		            categories: xArr,
 		            crosshair: true
 		        },
 		        yAxis: {
@@ -102,7 +97,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		        tooltip: {
 		            headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
 		            pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-		                '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
+		                '<td style="padding:0"><b>{point.y:.0f}</b></td></tr>',
 		            footerFormat: '</table>',
 		            shared: true,
 		            useHTML: true
@@ -114,9 +109,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		            }
 		        },
 		        series: [{
-		            name: '专业',
-// 		            data: [49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]
-					data:data.y
+		            name: '人数',
+		            data: yArr
 		        }]
 		    });
 		    }

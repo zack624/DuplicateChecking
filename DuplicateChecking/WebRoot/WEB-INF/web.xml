@@ -11,38 +11,38 @@
   </welcome-file-list>
   
   <!-- 项目版本1.0.0，Servlet实现 -->
-  <servlet>
-    <servlet-name>PageServlet</servlet-name>
-    <servlet-class>home.nust.paging.web.PageServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>PageServlet</servlet-name>
-    <url-pattern>/PageServlet</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <servlet-name>IndexServlet</servlet-name>
-    <servlet-class>home.nust.paging.web.IndexServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>IndexServlet</servlet-name>
-    <url-pattern>/IndexServlet</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <servlet-name>ChartServlet</servlet-name>
-    <servlet-class>home.nust.paging.web.ChartServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>ChartServlet</servlet-name>
-    <url-pattern>/ChartServlet</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <servlet-name>NgServlet</servlet-name>
-    <servlet-class>home.nust.paging.test.NgServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>NgServlet</servlet-name>
-    <url-pattern>/NgServlet</url-pattern>
-  </servlet-mapping>
+<!--   <servlet> -->
+<!--     <servlet-name>PageServlet</servlet-name> -->
+<!--     <servlet-class>home.nust.paging.web.PageServlet</servlet-class> -->
+<!--   </servlet> -->
+<!--   <servlet-mapping> -->
+<!--     <servlet-name>PageServlet</servlet-name> -->
+<!--     <url-pattern>/PageServlet</url-pattern> -->
+<!--   </servlet-mapping> -->
+<!--   <servlet> -->
+<!--     <servlet-name>IndexServlet</servlet-name> -->
+<!--     <servlet-class>home.nust.paging.web.IndexServlet</servlet-class> -->
+<!--   </servlet> -->
+<!--   <servlet-mapping> -->
+<!--     <servlet-name>IndexServlet</servlet-name> -->
+<!--     <url-pattern>/IndexServlet</url-pattern> -->
+<!--   </servlet-mapping> -->
+<!--   <servlet> -->
+<!--     <servlet-name>ChartServlet</servlet-name> -->
+<!--     <servlet-class>home.nust.paging.web.ChartServlet</servlet-class> -->
+<!--   </servlet> -->
+<!--   <servlet-mapping> -->
+<!--     <servlet-name>ChartServlet</servlet-name> -->
+<!--     <url-pattern>/ChartServlet</url-pattern> -->
+<!--   </servlet-mapping> -->
+<!--   <servlet> -->
+<!--     <servlet-name>NgServlet</servlet-name> -->
+<!--     <servlet-class>home.nust.paging.test.NgServlet</servlet-class> -->
+<!--   </servlet> -->
+<!--   <servlet-mapping> -->
+<!--     <servlet-name>NgServlet</servlet-name> -->
+<!--     <url-pattern>/NgServlet</url-pattern> -->
+<!--   </servlet-mapping> -->
 	<!-- 版本1.0.0，Servlet实现 -->
   
   <!-- 项目1.0.1版本，基于Spring和Hibernate框架 -->
